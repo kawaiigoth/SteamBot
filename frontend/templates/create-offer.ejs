@@ -1,0 +1,101 @@
+<!doctype html>
+<html class="no-js" lang="">
+<% include head.ejs %>
+<body>
+
+<%- include('header.ejs' , { data : user }); %>
+<main class="container mt-3">
+    <div id="alertMessage" class="alertbox alert fade" role="alert">
+        <button type="button" class="close"  aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <span id="alertText"></span>
+    </div>
+    <h3>Создать объявление о сделке</h3>
+    <p>
+        Разместите объявление о торговле, если вы планируете торговать ключами регулярно. Если вы собираетесь сделать
+        разовую покупку,
+        мы рекомендуем вам <a href="#">отвечать на существующие объявления</a>.
+    </p>
+    <p> Размещение объявления <strong>бесплатно</strong>.</p>
+    <p>
+        Прежде чем разместить объявление, внимательно ознакомьтесь с <a href="#">нашими условиями обслуживания</a>,
+        <a href="#">
+            <i class="fa fa-info-circle" aria-hidden="true"></i> руководством по размещение объявлений о продажах онлайн
+        </a> и <a href="#"><i class="fa fa-info-circle" aria-hidden="true"></i> руководством по сделкам наличными</a>. </p>
+    <form action="/create-offer" id="offerForm">
+        <h4>Тип сделки</h4>
+        <hr/>
+        <div class="row">
+            <div class="col-2">
+                <strong>Я хочу...</strong>
+            </div>
+            <div class="col-4">
+                <div class="form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input" type="radio" name="offer_type" id="Sell" value="sell">
+                        <strong>Продать</strong>
+                    </label>
+                </div>
+                <div class="form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input" type="radio" name="offer_type" id="Buy" value="buy">
+                        <strong>Купить</strong>
+                    </label>
+                </div>
+            </div>
+            <div class="col-6">
+                <p><em>Какой тип объявления вы хотите создать? Если хотите продать ключи, убедитесь, что в вашем кошельке есть ключи.</em></p>
+            </div>
+        </div>
+        <h4 class="mt-3">Дополнительная информация</h4>
+        <hr/>
+        <div class="row">
+            <div class="col-2">
+                <label class="col-form-label" for="currency"><strong>Валюта</strong></label>
+            </div>
+            <div class="col-4">
+                <select id="currency" name="currency" class="col-12 custom-select mr-2">
+                    <option selected value="RUB">RUB</option>
+                    <option value="EUR">EUR</option>
+                </select>
+            </div>
+            <div class="col-6">
+
+            </div>
+        </div>
+        <div class="mt-4 row">
+            <div class="col-2">
+                <label class="col-form-label" for="keys"><strong>Колличество ключей</strong></label>
+            </div>
+            <div class="col-4">
+                <div class="input-group">
+                    <input type="number" class="form-control" id="keys"  name="keys">
+                </div>
+            </div>
+            <div class="col-6">
+                <p><em>Колличество ключей которое вы хоите купить/продать.</em></p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2">
+                <label  for="cost"><strong>Стоимость</strong></label>
+            </div>
+            <div class="col-4">
+                <div class="input-group">
+                    <input type="number" class="form-control" id="cost" name="cost">
+                </div>
+            </div>
+            <div class="col-6">
+                <p><em>Колличество денег которое вы хотите получить/отдать за эти ключи =)</em></p>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Опубликовать объявление</button>
+    </form>
+
+</main>
+
+<% include scripts.ejs %>
+
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!doctype html>
+<html class="no-js" lang="">
+<% include head.ejs %>
+<body>
+
+<%- include('header.ejs' , { data : user }); %>
+<main class="container mt-3">
+
+    <h3>Купить ключи у <%- trade.owner_name %></h3>
+    <form action="/create-trade" id="tradeForm">
+        <hr/>
+        <div class="row">
+            <div class="col-2">
+                <label  for="keys_amount"><strong>Колличество ключей для(тут наоборот) <%- trade.offer_type %>:</strong></label>
+            </div>
+            <div class="col-4">
+                <div class="input-group">
+                    <input type="number" class="form-control" min="1" max="<%- trade.keys  %>" id="keys_amount" name="cost">
+                </div>
+            </div>
+            <div class="col-6">
+                <p><em>ТЕКСТ текст</em></p>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Сделать предложение :3</button>
+    </form>
+</main>
+
+<% include scripts.ejs %>
+
+</body>
+</html>

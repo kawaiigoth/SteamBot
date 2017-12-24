@@ -1,0 +1,38 @@
+<!doctype html>
+<html class="no-js" lang="">
+<% include head.ejs %>
+<body>
+
+<%- include('header.ejs' , { data : user }); %>
+<main class="container mt-3">
+    <div id="alertMessage" class="alertbox alert fade" role="alert">
+        <button type="button" class="close"  aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <span id="alertText"></span>
+    </div>
+    <h3>Положить ключи:</h3>
+    <p>Для того, что бы продавать ключи, вам нужно передать их нашему боту. Введите коллиество ключей, которое вы хотели бы положить.</p>
+<form action="/add-currency" id="currencyFormGive" class="form-inline">
+    <div class="form-group">
+        <label for="curg">Введите колличество кредитов, которое хотите получить</label>
+        <input id="curg" name="cur" type="number" placeholder="Кредитов" class="form-control mr-2">
+        <button type="submit" class="btn btn-outline-success">Добавить</button>
+    </div>
+</form>
+    <hr/>
+    <h3>Взять ключи:</h3>
+    <p>Вернуть себе ключи. Введите коллиество ключей, которое вы хотели бы вернуть.</p>
+    <form action="/remove-currency" id="currencyFormGet" class="form-inline">
+        <div class="form-group">
+            <label for="cur">Введите колличество ключей, которое хотите вепнуть</label>
+            <input id="cur" name="cur" type="number" placeholder="Кредитов" class="form-control mr-2">
+            <button type="submit" class="btn btn-outline-success">Вернуть</button>
+        </div>
+    </form>
+</main>
+
+<% include scripts.ejs %>
+
+</body>
+</html>

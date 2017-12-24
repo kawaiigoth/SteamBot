@@ -1,0 +1,78 @@
+
+
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+body{
+    margin-bottom: 200px;
+}
+.table_td__middle td{
+    vertical-align: middle;
+}
+
+.table_caption__top{
+    caption-side: top;
+}
+
+.link {
+    color: #0275d8;
+    cursor: pointer;
+}
+
+.nav-link.active.bordered {
+    border-color: #428bca #428bca #fff!important;
+}
+
+.form-top_bordered{
+    border-bottom: 1px solid #428bca;
+}
+
+.form-lrb_bordered {
+    border-left: 1px solid #428bca;
+    border-right: 1px solid #428bca;
+    border-bottom: 1px solid #428bca;
+    padding: 10px;
+}
+
+label.custom-checkbox {
+    margin-bottom: 0!important;
+}
+
+
+.logo_link{
+    position: absolute;
+    z-index: 1;
+}
+
+@media (max-width: 1550px) {
+    .logo_link{
+        display: none;
+    }
+
+}
+
+@media (min-width: 1550px) {
+    .logo_text{
+        display: none;
+    }
+}
+
+.logo_img {
+
+}
+
+.alertbox{
+    position: fixed;
+    z-index: 1;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+
+
+
+
+
+
+

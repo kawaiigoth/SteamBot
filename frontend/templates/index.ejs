@@ -1,0 +1,107 @@
+<!doctype html>
+<html class="no-js" lang="">
+<% include head.ejs %>
+<body>
+
+<%- include('header.ejs' , { data : user }); %>
+<main class="container mt-3">
+    <ul class="nav nav-tabs form-top_bordered justify-content-center" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link active bordered" data-toggle="tab" href="#Sell" role="tab"> Быстрая покупка</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link bordered" data-toggle="tab" href="#Buy" role="tab"> Быстрая продажа</a>
+        </li>
+    </ul>
+
+    <div class="tab-content form-lrb_bordered">
+        <div role="tabpanel" id="Sell" class="tab-pane fade show active">
+            <form class="justify-content-center form-inline">
+                <div class="form-group">
+                    <label class="sr-only" for="SellSum">Name</label>
+                    <input id="SellSum" type="number" placeholder="Сумма" class="form-control mr-2">
+                    <label class="sr-only" for="SellMoney">Name</label>
+                    <select id="SellMoney" class="custom-select mr-2">
+                        <option selected value="1">RUB</option>
+                        <option value="2">EUR</option>
+                    </select>
+                    <label class="sr-only" for="SellCountry">Name</label>
+                    <input id="SellCountry" type="text" placeholder="Russian Federation" class="form-control mr-2">
+                    <label class="sr-only" for="SellBank">Name</label>
+                    <select id="SellBank" class="custom-select mr-2">
+                        <option selected>Переводы через конкретный банк</option>
+                        <option value="1">Сбербанк</option>
+                        <option value="2">Альфбанк</option>
+                        <option value="3">Киви</option>
+                        <option value="4">Вебмани</option>
+                    </select>
+                    <button type="submit" class="btn btn-outline-warning">Поиск</button>
+                </div>
+            </form>
+        </div>
+        <div role="tabpanel" id="Buy" class="tab-pane fade">
+            <form class=" justify-content-center form-inline">
+                <div class="form-group">
+                    <label class="sr-only" for="Sum">Name</label>
+                    <input id="Sum" type="number" placeholder="Сумма" class="form-control mr-2">
+                    <label class="sr-only" for="Money">Name</label>
+                    <select id="Money" class="custom-select mr-2">
+                        <option selected value="1">RUB</option>
+                        <option value="2">EUR</option>
+                    </select>
+                    <label class="sr-only" for="Country">Name</label>
+                    <input id="Country" type="text" placeholder="Russian Federation" class="form-control mr-2">
+                    <label class="sr-only" for="Bank">Name</label>
+                    <select id="Bank" class="custom-select mr-2">
+                        <option selected>Переводы через конкретный банк</option>
+                        <option value="1">Сбербанк</option>
+                        <option value="2">Альфбанк</option>
+                        <option value="3">Киви</option>
+                        <option value="4">Вебмани</option>
+                    </select>
+                    <button type="submit" class="btn btn-outline-warning">Поиск</button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+
+    <% var offers = JSON.parse(JSON.stringify(data))%>
+    <table id="offerTable" class="table table-striped table-hover">
+        <caption class="table_caption__top">
+            <h3>Результаты поиска: купить ключи</h3>
+        </caption>
+        <thead class="thead-default">
+        <tr>
+            <th>Трейдер</th>
+            <th>Цена</th>
+            <th>Колличество ключей</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody class="table_td__middle">
+
+        <% for (var i = 0; i < offers.length; i++ ) { %>
+        <tr>
+            <td><a href=<%= offers[i].link %>> <%= offers[i].owner_name %></a></td>
+            <td><%= offers[i].cost %> <%= offers[i].currency %></td>
+            <td><%= offers[i].keys %></td>
+            <% if (user && user.user_id !== offers[i].owner_id) {%>
+            <td>
+                <button type="button" class=" btn btn-secondary">Изменить</button>
+            </td>
+            <%} else {%>
+            <td>
+                <a href="/create-trade?id=<%= offers[i].id%>" type="button" class=" btn btn-secondary">Купить</a>
+            </td>
+            <%}%>
+        </tr>
+        <% } %>
+        </tbody>
+    </table>
+</main>
+
+<% include scripts.ejs %>
+
+</body>
+</html>
